@@ -4,7 +4,7 @@
       @click="toggleAside"
       :class="[
         'fixed top-4 z-50 p-2 bg-green-700 text-white rounded-md transition-all duration-300 ease-in-out',
-        isAsideOpen ? 'left-64' : 'left-4'
+        isAsideOpen ? 'left-64' : 'left-4',
       ]"
     >
       <span class="material-icons">{{ isAsideOpen ? 'close' : 'menu' }}</span>
@@ -16,6 +16,7 @@
         isAsideOpen ? 'translate-x-0' : '-translate-x-full',
       ]"
     >
+      <!-- router logotipo -->
       <RouterLink to="/" class="block mb-10 text-center">
         <img
           alt="pokeball logo"
@@ -25,35 +26,49 @@
           class="mx-auto"
         />
       </RouterLink>
+      <!--fin router logotipo -->
 
+      <!-- Inicio nav -->
       <nav class="flex flex-col gap-6 font-semibold">
-        <RouterLink to="/" class="flex items-center gap-2" :class="{ 'text-yellow-300': $route.path === '/' }">
+        <RouterLink
+          to="/"
+          class="flex items-center gap-2"
+          :class="{ 'text-yellow-300': $route.path === '/' }"
+        >
           <span class="material-icons">home</span>
           <span>Home</span>
         </RouterLink>
-        <RouterLink to="/features" class="flex items-center gap-2" :class="{ 'text-yellow-300': $route.path === '/features' }">
-          <span class="material-icons">search</span>
+        <RouterLink
+          to="/features"
+          class="flex items-center gap-2"
+          :class="{ 'text-yellow-300': $route.path === '/features' }"
+        >
+          <span class="material-icons"
+            ><span class="material-icons-outlined"> description </span></span
+          >
           <span>Features</span>
         </RouterLink>
 
-        <RouterLink to="/" class="flex items-center gap-2" :class="{ 'text-yellow-300': $route.path === '/pricing' }">
+        <RouterLink
+          to="/pricing"
+          class="flex items-center gap-2"
+          :class="{ 'text-yellow-300': $route.path === '/pricing' }"
+        >
           <span class="material-icons">request_quote</span>
           <span>Pricing</span>
         </RouterLink>
-        <RouterLink to="/features" class="flex items-center gap-2" :class="{ 'text-yellow-300': $route.path === '/contact' }">
+        <RouterLink
+          to="/contact"
+          class="flex items-center gap-2"
+          :class="{ 'text-yellow-300': $route.path === '/contact' }"
+        >
           <span class="material-icons">contact_page</span>
           <span>Contact</span>
         </RouterLink>
-
-        </nav>
+      </nav>
     </aside>
 
-    <div
-      :class="[
-        'transition-all duration-300 ease-in-out',
-        isAsideOpen ? 'md:ml-64' : 'md:ml-0'
-      ]"
-    >
+    <div :class="['transition-all duration-300 ease-in-out', isAsideOpen ? 'md:ml-64' : 'md:ml-0']">
       <div class="grid grid-rows-[1fr_auto] min-h-screen">
         <main class="flex items-center justify-center p-4">
           <RouterView />
@@ -70,31 +85,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 // Se inicializa en 'true' para que en desktop se vea por defecto.
 // Puedes cambiarlo a 'false' si prefieres que inicie cerrado.
-const isAsideOpen = ref<boolean>(true)
+const isAsideOpen = ref<boolean>(true);
 
 function toggleAside(): void {
-  isAsideOpen.value = !isAsideOpen.value
+  isAsideOpen.value = !isAsideOpen.value;
 }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
